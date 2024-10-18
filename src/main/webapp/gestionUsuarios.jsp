@@ -22,31 +22,32 @@
                                 Perfil
                             </a>
 
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseUsuarios">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Usuarios
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCasos" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                Libros
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseUsuarios" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseCasos" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="SvListarUsuarios">Gestión Usuarios</a>
+                                    <a class="nav-link" href="registroLibros.jsp">Registro Libros</a>
+                                    <a class="nav-link" href="svLibros">Listado Libros</a>
                                 </nav>
                             </div>
 
                             <a class="nav-link" href="SvReservaLibros">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Solicitar Préstamos
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Solicitar Prestamos
                             </a>
 
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLibros" aria-expanded="false" aria-controls="collapseLibros">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
-                                Libros
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAbogados" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Administración
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLibros" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseAbogados" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="registroLibros.jsp">Registro Libros</a>
-                                    <a class="nav-link" href="svLibros">Listado Libros</a>
+                                    <a class="nav-link" href="SvListarUsuarios">Gestion Usuarios</a>
+                                    <a class="nav-link" href="svReserva">Gestión Préstamos</a>
                                 </nav>
                             </div>
                         </div>
@@ -54,9 +55,9 @@
                     <div class="sb-sidenav-footer">
                         <div class="small">
                             Usuario Nombre: 
-                            <%= (usuarioLogueado != null) ? usuarioLogueado.getNombre() : "Usuario no identificado" %>
+                            <%= (usuarioLogueado != null) ? usuarioLogueado.getNombre() : "Usuario no identificado"%>
                         </div>
-                        Correo Electrónico: <%= (usuarioLogueado != null) ? usuarioLogueado.getEmail() : "No disponible" %>
+                        Correo Electrónico: <%= (usuarioLogueado != null) ? usuarioLogueado.getEmail() : "No disponible"%>
                     </div>
                 </nav>
             </div>
@@ -95,16 +96,16 @@
                                             for (Usuario usuario : listaUsuarios) {
                                     %>
                                     <tr>
-                                        <td><%= usuario.getNombre() %></td>
-                                        <td><%= usuario.getEmail() %></td>
-                                        <td><%= usuario.getRol() %></td>
+                                        <td><%= usuario.getNombre()%></td>
+                                        <td><%= usuario.getEmail()%></td>
+                                        <td><%= usuario.getRol()%></td>
                                         <td>
                                             <!-- Enlace para editar -->
-                                            <a href="svEditarUsuario?id=<%= usuario.getId_usuario() %>">
+                                            <a href="svEditarUsuario?id=<%= usuario.getId_usuario()%>">
                                                 <button>
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
                                                     </svg>
                                                 </button>
                                             </a>
