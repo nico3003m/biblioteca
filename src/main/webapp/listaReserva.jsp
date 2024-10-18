@@ -47,7 +47,7 @@
                             </a>
                             <div class="collapse" id="collapseAbogados" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Gestión Usuarios</a>
+                                    <a class="nav-link" href="SvListarUsuarios">Gestión Usuarios</a>
                                     <a class="nav-link" href="svReserva">Gestión Préstamos</a>
                                 </nav>
                             </div>
