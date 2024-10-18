@@ -16,6 +16,8 @@ public class ControladoraJpa {
 
     UsuarioJpaController usuJpa = new UsuarioJpaController();
     LibroJpaController libroJap = new LibroJpaController();
+    PrestamoJpaController prestaJap = new PrestamoJpaController();
+    
 
     public void crearUsuarios(Usuario usu) {
         System.out.println("Entro aca al primero controladora 2");
@@ -89,6 +91,22 @@ public class ControladoraJpa {
         } catch (Exception e) {
             Logger.getLogger(ControladoraJpa.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+
+    public List<Prestamo> obtenerReserva() {
+        // Esto devolvera los préstamos con los datos de usuario y libro cargados
+        List<Prestamo> listaReservas = prestaJap.findPrestamoEntities();
+
+        // Cargar las relaciones si es necesario (puede que ya estén cargadas automáticamente)
+        for (Prestamo prestamo : listaReservas) {
+            prestamo.getUsuario(); // Acceder a la relación con Usuario para asegurar que se cargue
+            prestamo.getLibro();   // Acceder a la relación con Libro para asegurar que se cargue
+        }
+
+        return listaReservas;
+    }
+    public List<Usuario> obtenerUsuarios() {
+        return usuJpa.findUsuarioEntities();
     }
 
 }

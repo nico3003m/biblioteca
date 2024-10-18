@@ -142,4 +142,11 @@ public class Controladora {
             persis.editarLibro(libro);
         }
     }
+    
+    public List<Prestamo> obtenerReserva(){
+        return persis.obtenerReserva();
+    }
+    public List<Usuario> obtenerUsuarios() {
+        return persis.obtenerUsuarios();
+    }
 }
