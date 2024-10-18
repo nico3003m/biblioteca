@@ -82,6 +82,17 @@
                                             <div class="mt-4 mb-0">
                                                 <button type="submit" class="btn btn-primary">Crear Cuenta</button>
                                             </div>
+                                            <%
+                                                String errorEmail = (String) request.getAttribute("errorEmail");
+                                                if (errorEmail != null) {
+                                            %>
+                                            <div class="alert alert-danger" role="alert" style="margin: 20px">
+                                                <%= errorEmail%>
+                                            </div>
+                                            <%
+                                                }
+                                            %>
+
                                         </form>
 
 

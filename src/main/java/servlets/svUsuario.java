@@ -49,15 +49,6 @@ public class svUsuario extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -93,32 +84,33 @@ public class svUsuario extends HttpServlet {
         String correo = request.getParameter("correo");
         String contrasenia1 = request.getParameter("contrasenia1");
         String contrasenia2 = request.getParameter("contrasenia2");
-        String rol = "";
+        String rol = ""; // Asigna el rol que desees
+
+        Controladora controladoraClass = new Controladora();
+
+        // Verificar si el correo ya está en uso
+        if (controladoraClass.existeUsuarioPorEmail(correo)) {
+            request.setAttribute("errorEmail", "El correo electrónico ya está en uso.");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+            return;
+        }
 
         if (!contrasenia1.equals(contrasenia2)) {
-            request.setAttribute("error", "Contraseña no iguales");
+            request.setAttribute("error", "Las contraseñas no son iguales");
             request.getRequestDispatcher("register.jsp").forward(request, response);
         } else {
             String secretKey = "1234567890123456";  // La clave debe tener 16 caracteres (128 bits)
 
-            // Texto a encriptar
-            String originalPassword = contrasenia1;
-            System.out.println("Contraseña original: " + originalPassword);
-
             // Encriptar la contraseña
             String encryptedPassword = null;
             try {
-                encryptedPassword = encrypt(originalPassword, secretKey);
+                encryptedPassword = encrypt(contrasenia1, secretKey);
             } catch (Exception ex) {
                 Logger.getLogger(svUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
-            System.out.println("Contraseña encriptada: " + encryptedPassword);
-
-            Controladora controladoraClass = new Controladora();
 
             controladoraClass.crearUsuario(nombres, apellido, correo, encryptedPassword, rol);
             response.sendRedirect("login.jsp");
-
         }
 
     }

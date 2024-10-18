@@ -28,6 +28,11 @@ public class Controladora {
         persis.crearUsuarios(usu);
     }
 
+    public boolean existeUsuarioPorEmail(String correo) {
+        Usuario usuarioExistente = persis.buscarUsuario(correo);
+        return usuarioExistente != null; // Devuelve true si el usuario ya existe
+    }
+
     public boolean obtenerUsuarios(String correo, String contrasenia) throws Exception {
         Usuario usu = new Usuario();
         usu.setEmail(correo);
