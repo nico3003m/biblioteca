@@ -31,14 +31,12 @@ public class svLibros extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("entro al get ");
+       // Instacia controladora class
         Controladora controladoraClass = new Controladora();
         
         List<Libro> listaLibros =  controladoraClass.obtenerLibros();
         
-        for (Libro listaLibro : listaLibros) {
-            System.out.println("lista libros"+ listaLibro.getAutor());
-        }
+       // Enviamos lista Al JSP
         request.setAttribute("listaLibros", listaLibros);
         request.getRequestDispatcher("listaLibros.jsp").forward(request, response);
     }

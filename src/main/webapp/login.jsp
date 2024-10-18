@@ -33,7 +33,7 @@
                                             </div>
                                             <%
                                                 String error = (String) request.getAttribute("credencial");
-                                                System.out.println("error:"+error);
+                                              
                                                 if (error != null) {
                                             %>
                                             <div class="alert alert-danger" role="alert" style="margin: 20px">

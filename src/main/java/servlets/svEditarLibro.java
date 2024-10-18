@@ -17,7 +17,7 @@ import logica.Usuario;
  */
 @WebServlet(name = "svEditarLibro", urlPatterns = {"/svEditarLibro"})
 public class svEditarLibro extends HttpServlet {
-
+// Instacia Controladora class
     private Controladora control = new Controladora();
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -30,6 +30,7 @@ public class svEditarLibro extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        // Obtenemos los parameros
         Long idLibro = Long.parseLong(request.getParameter("id"));
         Usuario usuarioLogueado = (Usuario) request.getSession().getAttribute("usuarioLogueado");
         request.setAttribute("usuarioLogueado", usuarioLogueado);
@@ -44,6 +45,7 @@ public class svEditarLibro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Actualización de los datos del libro
+        // Obtenemos los datos Del jsp
         Long idLibro = Long.parseLong(request.getParameter("id"));
         Usuario usuarioLogueado = (Usuario) request.getSession().getAttribute("usuarioLogueado");
         request.setAttribute("usuarioLogueado", usuarioLogueado);
@@ -61,11 +63,7 @@ public class svEditarLibro extends HttpServlet {
         response.sendRedirect("svLibros");
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
+    
     @Override
     public String getServletInfo() {
         return "Short description";

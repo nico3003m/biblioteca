@@ -24,7 +24,7 @@ public class Controladora {
         usu.setEmail(correo);
         usu.setContrasena(contrasenia1);
         usu.setRol(rol);
-        System.out.println("Entro aca al primero controladora 1");
+       
         persis.crearUsuarios(usu);
     }
 
@@ -38,12 +38,12 @@ public class Controladora {
         usu.setEmail(correo);
 
         usu = persis.buscarUsuario(correo);
-        System.out.println("entro al obtener usuaiio");
+      
 
         if (usu != null) {
             // Sistema de encriptar contraseña
             String encryptedPassword = usu.getContrasena();
-            System.out.println("contraseña " + encryptedPassword);
+           
             String decryptedPassword = null;
             String secretKey = "1234567890123456";
 
@@ -65,9 +65,9 @@ public class Controladora {
     }
 
     public Usuario actualizarUsuario(int id_usuario, String nombre, String apellido, String correo, String contrasenia1) {
-        System.out.println("entro a mostrar el usuario id usuario : " + id_usuario);
+       
         Usuario usu = persis.findUsuarioById(id_usuario);  // Método que obtiene el usuario desde la base de datos
-        System.out.println("entro a mostrar el usuario id usuario : " + usu.getId_usuario());
+        
         if (usu != null) {
             // Actualizar los datos del usuario
             usu.setNombre(nombre);
@@ -94,7 +94,7 @@ public class Controladora {
     }
 
     public List<Libro> obtenerLibros() {
-        System.out.println("entro a obtener libro en class");
+       
         return persis.obtenerLibros();
     }
 

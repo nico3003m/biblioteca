@@ -43,7 +43,7 @@ public class seguridad {
 
     public static String mascara(String data) {
         String retorno = "";
-        System.out.println("Entro data"+ data);
+        
         switch (data) {
             case "true":
                 return retorno = "Disponible";

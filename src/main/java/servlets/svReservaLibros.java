@@ -35,7 +35,7 @@ public class svReservaLibros extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("Entró al GET en SvReservaLibros");
+       
         Controladora controladoraClass = new Controladora();
 
         // Obtener la lista completa de libros
@@ -46,9 +46,9 @@ public class svReservaLibros extends HttpServlet {
 
         // Filtrar los libros disponibles
         for (Libro libro : listaLibros) {
-            if (libro.isDisponibilidad()) { // Asumiendo que isDisponibilidad() es un booleano
+            if (libro.isDisponibilidad()) { 
                 listaLibrosDisponibles.add(libro); // Agregar solo los libros disponibles
-                System.out.println("Libro disponible: " + libro.getTitulo());
+               
             }
         }
 

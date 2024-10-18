@@ -20,7 +20,7 @@ public class ControladoraJpa {
     
 
     public void crearUsuarios(Usuario usu) {
-        System.out.println("Entro aca al primero controladora 2");
+        
         usuJpa.create(usu);
     }
 
@@ -29,7 +29,7 @@ public class ControladoraJpa {
 
         for (Usuario usuario : usu) {
             if (usuario.getEmail().equalsIgnoreCase(Correo)) {
-                System.out.println("entro al buscar Usuario");
+                
 
                 return usuario;
             }
@@ -48,7 +48,7 @@ public class ControladoraJpa {
     }
 
     public Usuario findUsuarioById(int id) {
-        System.out.println("entro a findUsario");
+        
         return usuJpa.findUsuario(id);  // Método existente en tu JPA para encontrar el usuario
     }
 
@@ -57,7 +57,7 @@ public class ControladoraJpa {
     }
 
     public List<Libro> obtenerLibros() {
-        System.out.println("entro a obtener libro en cotroladora jpa");
+        
         List<Libro> listaLibros = libroJap.findLibroEntities();
         return listaLibros;
     }

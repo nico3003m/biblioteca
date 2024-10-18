@@ -33,7 +33,7 @@ public class SvListarUsuarios extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // También podemos manejar el POST, pero en este caso no es necesario
+       
         doGet(request, response);
     }
 }
