@@ -18,7 +18,7 @@ public class Controladora {
 
     public void crearUsuario(String nombres, String apellido, String correo, String contrasenia1, String rol) {
         Usuario usu = new Usuario();
-
+        // Setteo en clase 
         usu.setNombre(nombres);
         usu.setApellido(apellido);
         usu.setEmail(correo);
@@ -36,14 +36,14 @@ public class Controladora {
         System.out.println("entro al obtener usuaiio");
 
         if (usu != null) {
-
+            // Sistema de encriptar contraseña
             String encryptedPassword = usu.getContrasena();
             System.out.println("contraseña " + encryptedPassword);
             String decryptedPassword = null;
             String secretKey = "1234567890123456";
 
             decryptedPassword = decrypt(encryptedPassword, secretKey);
-            System.out.println("Contraseña desencriptada: " + decryptedPassword);
+
             if (decryptedPassword.equals(contrasenia)) {
                 return true;
 
@@ -74,7 +74,7 @@ public class Controladora {
             persis.editarUsuario(usu);
         }
 
-        return usu;  // Retornar el usuario actualizado
+        return usu;
     }
 
     public void crearLibros(String nombre, String autor, int anio, String bn, String genero, boolean disponibilidad) {
@@ -112,7 +112,7 @@ public class Controladora {
             prestamo.setFecha_prestamo(new Date()); // Establecer la fecha de préstamo
             // Aquí podrías establecer la fecha de devolución, por ejemplo, a 14 días después
             Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DAY_OF_MONTH, 14); // Suponiendo que el préstamo es por 14 días
+            calendar.add(Calendar.DAY_OF_MONTH, 14);
             prestamo.setFecha_devolucion(calendar.getTime());
             prestamo.setEstado("Prestado");
             persis.crearPrestamo(prestamo);
@@ -121,5 +121,20 @@ public class Controladora {
 
     public Libro obtenerLibroPorId(Long libroId) {
         return persis.findLibro(libroId);
+    }
+
+    public void actualizarLibro(Long idLibro, String titulo, String autor, int anio, String isbn, String genero, boolean disponibilidad) {
+        Libro libro = persis.findLibro(idLibro);
+
+        if (libro != null) {
+            libro.setTitulo(titulo);
+            libro.setAutor(autor);
+            libro.setAno(anio);
+            libro.setISBN(isbn);
+            libro.setGenero(genero);
+            libro.setDisponibilidad(disponibilidad);
+
+            persis.editarLibro(libro);
+        }
     }
 }

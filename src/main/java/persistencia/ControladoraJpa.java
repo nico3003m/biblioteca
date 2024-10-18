@@ -78,7 +78,17 @@ public class ControladoraJpa {
         PrestamoJpaController prestamoJpa = new PrestamoJpaController();
         prestamoJpa.create(prestamo);
     }
-     public Libro findLibro(Long id) {
+
+    public Libro findLibro(Long id) {
         return libroJap.findLibro(id);
     }
+
+    public void editarLibro(Libro libro) {
+        try {
+            libroJap.edit(libro);
+        } catch (Exception e) {
+            Logger.getLogger(ControladoraJpa.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
 }

@@ -1,6 +1,7 @@
 package logica;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,6 +21,7 @@ public class Usuario implements Serializable {
     private int id_usuario;
     private String nombre;
     private String apellido;
+    @Column(unique = true)
     private String email;
     private String contrasena;
     private String rol;
